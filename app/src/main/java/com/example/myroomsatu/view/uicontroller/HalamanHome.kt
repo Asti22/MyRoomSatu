@@ -81,5 +81,55 @@ fun ListSiswa(
     LazyColumn(modifier = modifier) {
         items(
             items = itemSiswa,
-            key = { it.id }
+            key = { it.id })
+        { person ->
+            DataSiswa(
+                siswa = person,
+                modifier = Modifier.padding(all = dimensionResource(id = 8.dp))
+            )
+        }
+    }
+}
+@Composable
+fun DataSiswa(
+    siswa: Siswa,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(all = dimensionResource(id = 20.dp)),
+            verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = 8.dp))
+        ) {
+            // Baris 1: Nama dan Telepon
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                // Nama Siswa
+                Text(
+                    text = siswa.nama,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                Spacer(Modifier.weight(weight = 1f)) // Spacer untuk mendorong item ke tepi
+                // Ikon dan Nomor Telepon
+                Icon(
+                    imageVector = Icons.Default.Phone,
+                    contentDescription = null, // Tidak perlu content description karena teks telepon sudah ada
+                )
+                Text(
+                    text = siswa.telpon,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+            // Baris 2: Alamat
+            Text(
+                text = siswa.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+    }
+}
 
