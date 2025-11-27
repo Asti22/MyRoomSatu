@@ -20,4 +20,16 @@ fun HomeScreen(
                 canNavigateBack = false, // Ini adalah layar utama, tidak ada tombol kembali.
                 scrollBehavior = scrollBehavior
             )
-}
+},
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToItemEntry, // Aksi: navigasi ke layar entry siswa
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(all = dimensionResource(id = 20.dp))
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.TambahSiswa) // Deskripsi aksesibilitas
+                )
+            }
+        },
