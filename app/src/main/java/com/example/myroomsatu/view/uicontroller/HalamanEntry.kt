@@ -40,3 +40,32 @@ fun EntrySiswaScreen(
         )
     }
 }
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = 20.dp)),
+        modifier = modifier.padding(all = dimensionResource(id = 16.dp))
+    ) {
+        // Komponen Form Input Siswa
+        FormInputSiswa(
+            detailSiswa = uiStateSiswa.detailSiswa,
+            onValueChange = onSiswaValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Tombol Submit/Simpan
+        Button(
+            onClick = onSaveClick,
+            enabled = uiStateSiswa.isEntryValid, // Hanya aktif jika input valid
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = stringResource(R.string.Submit)) // Pastikan R.string.Submit ada
+        }
+    }
+}
