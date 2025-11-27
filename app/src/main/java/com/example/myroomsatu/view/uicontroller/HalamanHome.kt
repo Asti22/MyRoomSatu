@@ -45,3 +45,32 @@ fun HomeScreen(
         )
     }
 }
+@Composable
+fun BodyHome(
+    itemSiswa: List<Siswa>,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ){
+        if (itemSiswa.isEmpty()) {
+            Text(
+                text = stringResource(R.string.TidakAdaDataSiswa), // Pesan 'Data Kosong'
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge
+            )
+            Text(
+                text = "Tap + untuk menambah data", // Instruksi tambahan
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium
+            )
+        } else {
+            ListSiswa(
+                itemSiswa = itemSiswa,
+                modifier = Modifier.padding(horizontal = dimensionResource(id = 8.dp))
+            )
+        }
+    }
+}
+
