@@ -26,7 +26,7 @@ fun SiswaTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.Back)
+                        contentDescription = stringResource(R.string.back)
                     )
                 }
             }
